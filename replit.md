@@ -36,5 +36,14 @@ environment.js    - Backend API URL config (default: http://127.0.0.1:8080/api)
 - **Backend API**: Configured in `environment.js`, defaults to `http://127.0.0.1:8080/api`
 - **Deployment**: Static site deployment, build output in `dist/`
 
+## Admin Pages
+- `/admin` — Dashboard with charts and stats
+- `/admin/etudiants/gestion` — Full student management (CRUD + CSV import + filters)
+- `/admin/enseignants` — Teacher management (CRUD + filters + profile view)
+- `/admin/academique` — Academic structure management (Years → Semesters → Modules → Courses, full drill-down CRUD)
+- `/admin/enseignements` — Teaching units / subjects management
+- `/admin/questionnaires` — Evaluation form management
+- `/admin/periodes` — Period/scheduling management
+
 ## Workflows
 - **Start application**: `npm run dev` on port 5000 (webview)

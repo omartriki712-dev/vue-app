@@ -25,6 +25,7 @@ import AdminDashboard from '../views/admin/AdminDashboard.vue';
 import AdminStudents from '../views/admin/AdminStudents.vue';
 import AdminStudentsManage from '../views/admin/AdminStudentsManage.vue';
 import AdminTeachers from '../views/admin/AdminTeachers.vue';
+import AdminAcademic from '../views/admin/AdminAcademic.vue';
 import AdminCourses from '../views/admin/AdminCourses.vue';
 import AdminForms from '../views/admin/AdminForms.vue';
 import AdminPeriods from '../views/admin/AdminPeriods.vue';
@@ -60,6 +61,7 @@ const routes = [
       { path: 'etudiants', name: 'AdminStudents', component: AdminStudents },
       { path: 'etudiants/gestion', name: 'AdminStudentsManage', component: AdminStudentsManage },
       { path: 'enseignants', name: 'AdminTeachers', component: AdminTeachers },
+      { path: 'academique', name: 'AdminAcademic', component: AdminAcademic },
       { path: 'enseignements', name: 'AdminCourses', component: AdminCourses },
       { path: 'questionnaires', name: 'AdminForms', component: AdminForms },
       { path: 'periodes', name: 'AdminPeriods', component: AdminPeriods },

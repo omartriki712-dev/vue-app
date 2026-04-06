@@ -81,7 +81,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { LayoutDashboard, Users, GraduationCap, BookOpen, ClipboardList, Calendar } from "lucide-vue-next";
+import { LayoutDashboard, Users, GraduationCap, BookOpen, ClipboardList, Calendar, Layers } from "lucide-vue-next";
 
 const emit = defineEmits(['collapse']);
 
@@ -95,12 +95,13 @@ function toggleCollapse() {
 }
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Tableau de bord",  route: "/admin" },
-  { icon: Users,           label: "Étudiants",        route: "/admin/etudiants/gestion" },
-  { icon: GraduationCap,   label: "Enseignants",      route: "/admin/enseignants" },
-  { icon: BookOpen,        label: "Enseignements",     route: "/admin/enseignements" },
-  { icon: ClipboardList,   label: "Questionnaires",    route: "/admin/questionnaires" },
-  { icon: Calendar,        label: "Périodes",          route: "/admin/periodes" },
+  { icon: LayoutDashboard, label: "Tableau de bord",      route: "/admin" },
+  { icon: Users,           label: "Étudiants",            route: "/admin/etudiants/gestion" },
+  { icon: GraduationCap,   label: "Enseignants",          route: "/admin/enseignants" },
+  { icon: Layers,          label: "Structure académique", route: "/admin/academique" },
+  { icon: BookOpen,        label: "Enseignements",        route: "/admin/enseignements" },
+  { icon: ClipboardList,   label: "Questionnaires",       route: "/admin/questionnaires" },
+  { icon: Calendar,        label: "Périodes",             route: "/admin/periodes" },
 ];
 
 function handleLogout() {
