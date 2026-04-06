@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "type": "module",
+  "source": "./index.html",
+  "name": "vue-project",
+  "description": "A Vue.js project with Tailwind CSS",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "apexcharts": "^5.10.4",
+    "chart.js": "^4.5.1",
+    "lucide-vue-next": "^0.575.0",
+    "vue": "^3.4.21",
+    "vue-chartjs": "^5.3.3",
+    "vue-router": "^4.6.4",
+    "vue3-apexcharts": "^1.11.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.18",
+    "postcss": "^8.4.35",
+    "tailwindcss": "3.4.16",
+    "vite": "6.0.4"
+  }
+}
