@@ -81,7 +81,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { LayoutDashboard, Users, BookOpen, ClipboardList, Calendar } from "lucide-vue-next";
+import { LayoutDashboard, Users, GraduationCap, BookOpen, ClipboardList, Calendar } from "lucide-vue-next";
 
 const emit = defineEmits(['collapse']);
 
@@ -96,7 +96,8 @@ function toggleCollapse() {
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Tableau de bord",  route: "/admin" },
-  { icon: Users,           label: "Étudiants",        route: "/admin/etudiants" },
+  { icon: Users,           label: "Étudiants",        route: "/admin/etudiants/gestion" },
+  { icon: GraduationCap,   label: "Enseignants",      route: "/admin/enseignants" },
   { icon: BookOpen,        label: "Enseignements",     route: "/admin/enseignements" },
   { icon: ClipboardList,   label: "Questionnaires",    route: "/admin/questionnaires" },
   { icon: Calendar,        label: "Périodes",          route: "/admin/periodes" },
