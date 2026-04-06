@@ -153,6 +153,44 @@
             <label class="form-label">Email</label>
             <input v-model="form.email" type="email" class="form-input" placeholder="email@isis.fr" required />
           </div>
+
+          <!-- Password (required when adding, optional when editing) -->
+          <div v-if="!editingTeacher" class="form-group">
+            <label class="form-label">Mot de passe</label>
+            <div class="input-password-wrap">
+              <input
+                v-model="form.password"
+                :type="showPassword ? 'text' : 'password'"
+                class="form-input input-password"
+                placeholder="Mot de passe initial"
+                required
+              />
+              <button type="button" class="pw-toggle" @click="showPassword = !showPassword" tabindex="-1">
+                <EyeOff v-if="showPassword" class="h-4 w-4" />
+                <Eye v-else class="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+          <div v-else class="form-group">
+            <label class="change-pw-toggle">
+              <input type="checkbox" v-model="changePassword" class="checkbox" />
+              Modifier le mot de passe
+            </label>
+            <div v-if="changePassword" class="input-password-wrap" style="margin-top:0.5rem">
+              <input
+                v-model="form.password"
+                :type="showPassword ? 'text' : 'password'"
+                class="form-input input-password"
+                placeholder="Nouveau mot de passe"
+                :required="changePassword"
+              />
+              <button type="button" class="pw-toggle" @click="showPassword = !showPassword" tabindex="-1">
+                <EyeOff v-if="showPassword" class="h-4 w-4" />
+                <Eye v-else class="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Spécialité</label>
@@ -244,7 +282,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { Search, Plus, Pencil, Trash2, RotateCcw, X, Eye, Users, UserCheck, BookOpen, GraduationCap } from 'lucide-vue-next';
+import { Search, Plus, Pencil, Trash2, RotateCcw, X, Eye, EyeOff, Users, UserCheck, BookOpen, GraduationCap } from 'lucide-vue-next';
 
 const specialites = ['Informatique', 'Mathématiques', 'Langues', 'Management', 'Sciences', 'Réseaux', 'Électronique'];
 
@@ -291,20 +329,26 @@ function initials(nom, prenom) {
 // Form modal
 const showFormModal = ref(false);
 const editingTeacher = ref(null);
-const form = ref({ prenom: '', nom: '', email: '', specialite: '', statut: 'Actif', matieres: [] });
+const form = ref({ prenom: '', nom: '', email: '', specialite: '', statut: 'Actif', matieres: [], password: '' });
 const formMatieres = ref('');
+const showPassword = ref(false);
+const changePassword = ref(false);
 
 function openAddModal() {
   editingTeacher.value = null;
-  form.value = { prenom: '', nom: '', email: '', specialite: '', statut: 'Actif', matieres: [] };
+  form.value = { prenom: '', nom: '', email: '', specialite: '', statut: 'Actif', matieres: [], password: '' };
   formMatieres.value = '';
+  showPassword.value = false;
+  changePassword.value = false;
   showFormModal.value = true;
 }
 
 function openEditModal(teacher) {
   editingTeacher.value = teacher;
-  form.value = { ...teacher, matieres: [...teacher.matieres] };
+  form.value = { ...teacher, matieres: [...teacher.matieres], password: '' };
   formMatieres.value = teacher.matieres.join(', ');
+  showPassword.value = false;
+  changePassword.value = false;
   showFormModal.value = true;
 }
 
@@ -847,6 +891,48 @@ function deleteTeacher() {
   border-color: #7c3aed;
   box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.15);
   background-color: white;
+}
+
+.input-password-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-password {
+  padding-right: 2.75rem;
+}
+
+.pw-toggle {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+.pw-toggle:hover { color: #2f0d73; }
+
+.change-pw-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #5f527a;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #2f0d73;
+  cursor: pointer;
 }
 
 .delete-text {
